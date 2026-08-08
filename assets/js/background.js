@@ -26,7 +26,7 @@
 
   // ---------------------------------------------------------- config
   var CFG = {
-    network:       { link: 132, mouse: 175, density: 13000, max: 70 },
+    network:       { link: 138, mouse: 175, density: 16000, max: 58 },
     constellation: { link: 158, mouse: 215, density: 15000, max: 62, maxLinks: 3 },
     waves:         { lines: 4, dots: 22, grid: 54 }
   };
@@ -69,11 +69,11 @@
       c: [toRgb(readVar("--field-1", "#1f3555")),
           toRgb(readVar("--field-2", "#4a5f8a")),
           toRgb(readVar("--field-3", "#2f7d8a"))],
-      node: (dark ? 0.62 : 0.46) * CALM,
-      link: (dark ? 0.20 : 0.15) * CALM,
-      hot:  (dark ? 0.50 : 0.38) * CALM,
-      glow: (dark ? 0.07 : 0.05) * CALM,
-      grid: (dark ? 0.05 : 0.035) * CALM
+      node: (dark ? 0.50 : 0.40) * CALM,
+      link: (dark ? 0.11 : 0.10) * CALM,
+      hot:  (dark ? 0.34 : 0.28) * CALM,
+      glow: (dark ? 0.04 : 0.035) * CALM,
+      grid: (dark ? 0.04 : 0.03) * CALM
     };
   }
 

@@ -13,10 +13,10 @@
   --accent:     #1f3555;
   --accent-lit: #2f5488;
 
-  /* background field — sober in light, neon in dark */
-  --field-1:    #1f3555;
-  --field-2:    #4a5f8a;
-  --field-3:    #2f7d8a;
+  /* background field — one restrained hue, not a palette */
+  --field-1:    #3d4d70;
+  --field-2:    #4a5a80;
+  --field-3:    #5a6a90;
 
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
            "Times New Roman", serif;
@@ -37,9 +37,9 @@
     --accent:     #9fbde8;
     --accent-lit: #c2d6f2;
 
-    --field-1:    #6366f1;   /* indigo  */
-    --field-2:    #a855f7;   /* violet  */
-    --field-3:    #22d3ee;   /* cyan    */
+    --field-1:    #7b8cde;   /* blue-grey violet — the single accent */
+    --field-2:    #6d7ec9;
+    --field-3:    #94a2e8;
   }
 }
 
