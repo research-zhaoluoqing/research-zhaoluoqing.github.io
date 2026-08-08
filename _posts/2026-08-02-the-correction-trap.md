@@ -6,6 +6,7 @@ summary: >-
   model problem — it is what happens to a correction after someone makes it.
 standfirst: On why pilots pass and systems fail
 tags: [governance, verification, deployment]
+linkedin_url: https://www.linkedin.com/feed/update/urn:li:activity:7489545468620877824/
 ---
 
 Three numbers in Stanford's 2026 AI Index refuse to sit together.
