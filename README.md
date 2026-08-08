@@ -47,6 +47,46 @@ the post URL are all generated. Nothing else to update.
 
 ---
 
+## Pattern: original post + deep dive
+
+When a piece has already run on LinkedIn, the page can carry both the version
+readers saw there and the longer argument. Two ingredients, no extra files:
+
+**1. Link back** — add the URL to the front matter:
+
+```yaml
+---
+title: "Your title"
+date: 2026-09-14
+linkedin_url: https://www.linkedin.com/posts/…
+---
+```
+
+A "Read the original on LinkedIn" chip appears under the title automatically.
+
+**2. Mark the two halves** in the body:
+
+```markdown
+<div class="original" markdown="1">
+
+The text as it ran on LinkedIn, pasted here so a reader who arrives from a
+search engine still gets the whole argument.
+
+</div>
+
+<p class="dd-label">Deep dive</p>
+
+The longer version: the parts that did not fit in 3,000 characters, the
+worked example, the caveat, the link to the paper.
+```
+
+`markdown="1"` is required — it tells Kramdown to keep parsing markdown inside
+the div.
+
+> **Only ever paste your own text.** Everything on this site is attributable to
+> you; a fabricated case study or an invented number is not recoverable once it
+> is indexed.
+
 ## Editing the fixed pages
 
 | Page | File |

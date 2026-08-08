@@ -394,6 +394,71 @@ footer.site p { margin: 0 0 .3rem; }
   outline-offset: 2px;
 }
 
+/* ------------------------------- original / deep-dive structure */
+
+.source-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .34rem;
+  font-family: var(--sans);
+  font-size: .74rem;
+  padding: .2rem .55rem;
+  margin-top: .55rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.source-chip:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Wrap the reproduced post in:  <div class="original" markdown="1"> … </div> */
+.original {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1.4rem 1.15rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  background: var(--bg-soft);
+}
+
+.original::before {
+  content: "As published on LinkedIn";
+  position: absolute;
+  top: -.62em;
+  left: .9rem;
+  padding: 0 .42rem;
+  background: var(--bg);
+  font-family: var(--sans);
+  font-size: .68rem;
+  letter-spacing: .04em;
+  color: var(--ink-faint);
+}
+
+.original > :last-child { margin-bottom: 0; }
+
+/* Label the expanded half:  <p class="dd-label">Deep dive</p> */
+.dd-label {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  font-family: var(--sans);
+  font-size: .7rem;
+  font-weight: 640;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 2.6rem 0 1.2rem;
+}
+
+.dd-label::before,
+.dd-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
 /* ------------------------------------------------ scroll reveal */
 
 .reveal {
