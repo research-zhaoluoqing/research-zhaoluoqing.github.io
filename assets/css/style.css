@@ -215,14 +215,51 @@ table { display: block; overflow-x: auto; border-collapse: collapse; width: 100%
 
 /* ------------------------------------------------------------ home */
 
-.lede {
-  font-size: 1.24rem;
-  line-height: 1.5;
-  color: var(--ink);
-  margin: 2.4rem 0 1.4rem;
+/* ------------------------------------------------ identity block */
+
+.identity {
+  margin: 2.6rem 0 0;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--rule);
 }
 
-.lede + p { color: var(--ink-soft); }
+.identity h1 {
+  margin: 0 0 .28rem;
+  font-size: 1.5rem;
+  letter-spacing: -.014em;
+}
+
+.identity .role {
+  font-family: var(--sans);
+  font-size: .88rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin: 0 0 .55rem;
+}
+
+.identity .handles {
+  font-family: var(--sans);
+  font-size: .8rem;
+  color: var(--ink-faint);
+  margin: 0;
+}
+
+.identity .handles a { text-decoration: none; }
+.identity .handles a:hover { text-decoration: underline; }
+
+/* ------------------------------------------------------------ home */
+
+.lede {
+  font-size: 1.28rem;
+  line-height: 1.48;
+  color: var(--ink);
+  margin: 1.8rem 0 0;
+  letter-spacing: -.008em;
+}
+
+.identity + .lede { margin-top: 1.9rem; }
+
+.lede + hr { margin: 1.5rem 0 1.5rem; }
 
 .section-label {
   font-family: var(--sans);
