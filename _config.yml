@@ -1,0 +1,35 @@
+title: Luoqing Zhao
+tagline: Verification and governance for AI in regulated processes
+description: >-
+  Writing on making non-deterministic systems safe to deploy where being wrong
+  has consequences — verification, failure paths, and the governance around them.
+author: Luoqing Zhao
+
+# GitHub Pages user site. Repository MUST be named exactly:
+#   research-zhaoluoqing.github.io
+url: "https://research-zhaoluoqing.github.io"
+baseurl: ""
+github_username: research-zhaoluoqing
+
+# Contact / profiles
+email: research.zhao.luoqing@gmail.com
+linkedin: https://www.linkedin.com/in/luoqing-zhao-3064862a
+orcid: 0009-0007-3900-1042
+
+permalink: /writing/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post

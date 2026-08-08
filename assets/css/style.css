@@ -1,0 +1,362 @@
+/* ------------------------------------------------------------------
+   Luoqing Zhao — personal site
+   Restrained, fast, no external assets, light/dark aware.
+   ------------------------------------------------------------------ */
+
+:root {
+  --ink:        #1a1d21;
+  --ink-soft:   #55606d;
+  --ink-faint:  #8a94a0;
+  --bg:         #fcfcfb;
+  --bg-soft:    #f2f4f6;
+  --rule:       #e0e4e9;
+  --accent:     #1f3555;
+  --accent-lit: #2f5488;
+
+  /* background field — sober in light, neon in dark */
+  --field-1:    #1f3555;
+  --field-2:    #4a5f8a;
+  --field-3:    #2f7d8a;
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+           "Times New Roman", serif;
+  --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+           "Helvetica Neue", Arial, sans-serif;
+
+  --measure: 34rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:        #e7eaee;
+    --ink-soft:   #a8b2be;
+    --ink-faint:  #6f7986;
+    --bg:         #14171b;
+    --bg-soft:    #1c2026;
+    --rule:       #2b313a;
+    --accent:     #9fbde8;
+    --accent-lit: #c2d6f2;
+
+    --field-1:    #6366f1;   /* indigo  */
+    --field-2:    #a855f7;   /* violet  */
+    --field-3:    #22d3ee;   /* cyan    */
+  }
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--bg);          /* background lives here so the canvas can sit above it */
+}
+
+/* ---------------------------------------------- interactive field */
+
+#bg-field {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;           /* never blocks selection or clicks */
+  /* fade the field out behind the reading column, keep it alive at the edges */
+  -webkit-mask-image: radial-gradient(ellipse 44% 52% at 50% 40%,
+                      transparent 0%, rgba(0,0,0,.5) 58%, #000 100%);
+          mask-image: radial-gradient(ellipse 44% 52% at 50% 40%,
+                      transparent 0%, rgba(0,0,0,.5) 58%, #000 100%);
+}
+
+header.site, main, footer.site { position: relative; z-index: 1; }
+
+body {
+  margin: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.62;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------------------------------------------------------- header */
+
+header.site {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2.6rem 1.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .6rem 1.4rem;
+}
+
+.brand {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: .95rem;
+  letter-spacing: .01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.brand:hover { color: var(--accent); }
+
+header.site nav {
+  display: flex;
+  gap: 1.15rem;
+  font-family: var(--sans);
+  font-size: .85rem;
+}
+
+header.site nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+header.site nav a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ------------------------------------------------------------ main */
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ------------------------------------------------------- typography */
+
+h1, h2, h3 {
+  font-family: var(--sans);
+  line-height: 1.25;
+  letter-spacing: -.011em;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: 1.72rem;
+  font-weight: 650;
+  margin: 2.6rem 0 .5rem;
+}
+
+h2 {
+  font-size: 1.12rem;
+  font-weight: 620;
+  margin: 2.6rem 0 .55rem;
+}
+
+h3 {
+  font-size: .96rem;
+  font-weight: 620;
+  margin: 2rem 0 .4rem;
+}
+
+p { margin: 0 0 1.15rem; }
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+a:hover { color: var(--accent-lit); }
+
+strong { font-weight: 640; }
+
+em { font-style: italic; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 2.8rem 0;
+}
+
+blockquote {
+  margin: 1.6rem 0;
+  padding: .1rem 0 .1rem 1.15rem;
+  border-left: 2px solid var(--rule);
+  color: var(--ink-soft);
+}
+blockquote p:last-child { margin-bottom: 0; }
+
+ul, ol { margin: 0 0 1.15rem; padding-left: 1.3rem; }
+li { margin-bottom: .38rem; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: .86em;
+  background: var(--bg-soft);
+  padding: .12em .34em;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--bg-soft);
+  padding: 1rem 1.1rem;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-size: .8rem;
+  line-height: 1.55;
+}
+pre code { background: none; padding: 0; font-size: inherit; }
+
+/* wide content must scroll inside itself, never the page */
+table { display: block; overflow-x: auto; border-collapse: collapse; width: 100%; }
+
+.muted { color: var(--ink-faint); }
+
+/* ------------------------------------------------------------ home */
+
+.lede {
+  font-size: 1.24rem;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 2.4rem 0 1.4rem;
+}
+
+.lede + p { color: var(--ink-soft); }
+
+.section-label {
+  font-family: var(--sans);
+  font-size: .72rem;
+  font-weight: 640;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 3rem 0 1rem;
+}
+
+/* ------------------------------------------------- list of writing */
+
+.entry {
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--rule);
+}
+.entry:last-child { border-bottom: 1px solid var(--rule); }
+
+.entry h3 { margin: 0 0 .3rem; font-size: 1.02rem; }
+.entry h3 a { color: var(--ink); text-decoration: none; }
+.entry h3 a:hover { color: var(--accent); }
+
+.entry .meta {
+  font-family: var(--sans);
+  font-size: .78rem;
+  color: var(--ink-faint);
+  margin: 0 0 .4rem;
+}
+
+.entry p.summary {
+  margin: 0;
+  font-size: .94rem;
+  color: var(--ink-soft);
+}
+
+/* ------------------------------------------------------------ post */
+
+.post header { margin-bottom: 2.2rem; }
+.post h1 { margin-bottom: .55rem; }
+
+.post .meta {
+  font-family: var(--sans);
+  font-size: .8rem;
+  color: var(--ink-faint);
+  margin: 0;
+}
+.post .meta .sep { margin: 0 .35rem; }
+
+.post-nav {
+  font-family: var(--sans);
+  font-size: .85rem;
+  margin: 3.5rem 0 0;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+}
+.post-nav a { text-decoration: none; }
+.post-nav a:hover { text-decoration: underline; }
+
+/* --------------------------------------------------------- research */
+
+.paper {
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--rule);
+}
+.paper:last-of-type { border-bottom: 1px solid var(--rule); }
+
+.paper h3 { margin: 0 0 .3rem; font-size: 1.02rem; }
+.paper .meta {
+  font-family: var(--sans);
+  font-size: .78rem;
+  color: var(--ink-faint);
+  margin: 0 0 .5rem;
+}
+.paper p { margin: 0 0 .5rem; font-size: .94rem; color: var(--ink-soft); }
+
+/* ---------------------------------------------------------- footer */
+
+footer.site {
+  max-width: var(--measure);
+  margin: 5rem auto 0;
+  padding: 1.4rem 1.5rem 3.5rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: .8rem;
+  color: var(--ink-soft);
+}
+footer.site p { margin: 0 0 .3rem; }
+
+/* ------------------------------------------------- field switcher */
+
+.field-switch {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-top: 1rem;
+}
+
+.field-switch .label {
+  font-size: .72rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-right: .25rem;
+}
+
+.field-switch button {
+  font: inherit;
+  font-size: .74rem;
+  padding: .26rem .62rem;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: color .15s, border-color .15s;
+}
+
+.field-switch button:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+.field-switch button.is-on {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.field-switch button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------- mobile */
+
+@media (max-width: 34rem) {
+  body { font-size: 17.5px; }
+  header.site { padding-top: 1.8rem; }
+  h1 { font-size: 1.5rem; }
+  .lede { font-size: 1.12rem; }
+}
