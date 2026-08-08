@@ -20,13 +20,7 @@ fall between two functions.
 
 <p class="section-label">Writing</p>
 
-{% for post in site.posts limit: 5 %}
-<div class="entry">
-  <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-  <p class="meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time></p>
-  {% if post.summary %}<p class="summary">{{ post.summary }}</p>{% endif %}
-</div>
-{% endfor %}
+{% for post in site.posts limit: 5 %}{% include entry.html post=post %}{% endfor %}
 
 {% if site.posts.size > 5 %}
 <p style="margin-top:1.2rem"><a href="{{ '/writing/' | relative_url }}">All writing →</a></p>

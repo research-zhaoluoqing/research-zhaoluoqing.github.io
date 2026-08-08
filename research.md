@@ -10,7 +10,7 @@ description: Working papers on runtime verification of language-model output and
 Independent work, conducted on personal time with personal resources and public
 data. Both papers are working papers on SSRN; neither has completed peer review.
 
-<div class="paper">
+<div class="paper reveal">
   <h3>Semantic Validation Gates</h3>
   <p class="meta">Working paper · SSRN, 2026</p>
   <p>
@@ -21,10 +21,13 @@ data. Both papers are working papers on SSRN; neither has completed peer review.
     chains: AUROC 0.990 on compositional violations, and a 1% false-positive
     rate at 95% recall.
   </p>
-  <p><a href="https://ssrn.com/abstract=7157718">Read on SSRN →</a></p>
+  <div class="linkrow">
+    <a href="https://ssrn.com/abstract=7157718">SSRN</a>
+    <a href="https://github.com/research-zhaoluoqing/semantic-validation-gates">Code</a>
+  </div>
 </div>
 
-<div class="paper">
+<div class="paper reveal">
   <h3>One decorrelated model suite as a geometric reference frame</h3>
   <p class="meta">Working paper · SSRN, 2026 (revised)</p>
   <p>
@@ -34,7 +37,12 @@ data. Both papers are working papers on SSRN; neither has completed peer review.
     model families, only one suite satisfies all four; the rest are reported as
     measured offsets against that calibrated surface rather than discarded.
   </p>
-  <p><a href="https://ssrn.com/abstract=6365178">Read on SSRN →</a></p>
+  <div class="linkrow">
+    <a href="https://ssrn.com/abstract=6365178">SSRN</a>
+  </div>
+  <p class="muted" style="font-size:.82rem; margin-top:.6rem">
+    Code and artifacts are released on publication.
+  </p>
 </div>
 
 <p class="section-label">Identifiers</p>

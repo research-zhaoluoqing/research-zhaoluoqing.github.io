@@ -5,6 +5,7 @@ summary: >-
   Capability went up fivefold and deployment barely moved. The gap is not a
   model problem — it is what happens to a correction after someone makes it.
 standfirst: On why pilots pass and systems fail
+tags: [governance, verification, deployment]
 ---
 
 Three numbers in Stanford's 2026 AI Index refuse to sit together.
