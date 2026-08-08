@@ -47,7 +47,8 @@ data. Both papers are working papers on SSRN; neither has completed peer review.
 
 <p class="section-label">Identifiers</p>
 
-ORCID <a href="https://orcid.org/{{ site.orcid }}">{{ site.orcid }}</a>
+ORCID <a href="https://orcid.org/{{ site.orcid }}">{{ site.orcid }}</a><br>
+<a href="{{ site.scholar }}">Google Scholar</a>
 
 <p class="section-label">A note on method</p>
 

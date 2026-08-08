@@ -26,6 +26,14 @@ description: Where to find the code, the papers, the identifiers and the feed.
   </li>
 
   <li class="reveal">
+    <a href="{{ site.scholar }}">
+      <span class="name">Google Scholar</span>
+      <span class="what">Indexed publications and citations.</span>
+      <span class="addr">scholar.google.com</span>
+    </a>
+  </li>
+
+  <li class="reveal">
     <a href="https://orcid.org/{{ site.orcid }}">
       <span class="name">ORCID</span>
       <span class="what">Persistent identifier tying the published work to one author record.</span>

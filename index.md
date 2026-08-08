@@ -10,6 +10,7 @@ description: >-
   <p class="role">Independent research — runtime verification and governance of language-model output</p>
   <p class="handles">
     <a href="mailto:{{ site.email }}">Email</a> ·
+    <a href="{{ site.scholar }}">Scholar</a> ·
     <a href="https://orcid.org/{{ site.orcid }}">ORCID</a> ·
     <a href="https://ssrn.com/abstract=7157718">SSRN</a> ·
     <a href="https://github.com/research-zhaoluoqing">GitHub</a>
