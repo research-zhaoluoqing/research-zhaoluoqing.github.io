@@ -311,54 +311,38 @@ table { display: block; overflow-x: auto; border-collapse: collapse; width: 100%
 
 .claim + p { color: var(--ink-soft); }
 
-/* -------------------------------------- three numbered dimensions */
+/* ------------------------------------------------- track record */
 
-.dims {
+.track {
   list-style: none;
   padding: 0;
-  margin: 2.2rem 0;
-  display: grid;
-  gap: .1rem;
+  margin: 1.9rem 0 0;
 }
 
-.dims li {
-  display: grid;
-  grid-template-columns: 2.6rem 1fr;
-  gap: 0 .9rem;
-  padding: 1.05rem 0;
+.track li {
+  padding: .95rem 0;
   margin: 0;
   border-top: 1px solid var(--rule);
 }
 
-.dims li:last-child { border-bottom: 1px solid var(--rule); }
+.track li:last-child { border-bottom: 1px solid var(--rule); }
 
-.dims .n {
-  font-family: var(--sans);
-  font-size: .78rem;
+.track h3 {
+  margin: 0 0 .2rem;
+  font-size: .9rem;
   font-weight: 640;
-  letter-spacing: .06em;
-  color: var(--accent);
-  padding-top: .18rem;
+  letter-spacing: .01em;
+  color: var(--ink);
 }
 
-.dims h3 {
-  margin: 0 0 .22rem;
-  font-size: .96rem;
-  font-weight: 640;
-  letter-spacing: -.006em;
-}
-
-.dims p {
+.track p {
   margin: 0;
-  grid-column: 2;
   font-size: .95rem;
   line-height: 1.55;
   color: var(--ink-soft);
 }
 
 @media (max-width: 30rem) {
-  .dims li { grid-template-columns: 1fr; gap: .2rem; }
-  .dims p { grid-column: 1; }
   .claim { font-size: 1.24rem; }
 }
 

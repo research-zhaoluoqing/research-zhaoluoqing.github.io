@@ -19,28 +19,21 @@ description: >-
 
 <p class="claim">Most of the difficulty in deploying AI is not making it work. It is deciding <em>what happens when it is wrong</em>.</p>
 
-I work on language models in settings where being wrong is a reportable event —
-where the question is not whether a system is impressive but whether anyone can
-say why its output should be trusted. Three things decide that, and none of them
-is a model problem.
+I architect AI workflows for highly regulated environments — where being wrong is
+a reportable event. The hard part is rarely the model. It is defining the strict
+boundaries of what should be automated at all, and engineering the governance
+stack that holds the rest.
 
-<ol class="dims">
+<ul class="track">
   <li>
-    <span class="n">01</span>
-    <h3>Definition</h3>
-    <p>What counts as an acceptable output at each step. Not <em>is it correct</em>, but <em>how wrong can it be and still be usable</em>. Human judgement is not deterministic either; processes tolerate that because someone defined the tolerance.</p>
+    <h3>Production AI and governance</h3>
+    <p>Running production language-model pipelines inside a global markets control function, backed by published runtime verification theory rather than by hope.</p>
   </li>
   <li>
-    <span class="n">02</span>
-    <h3>Diagnosis</h3>
-    <p>Where a long chain actually broke. Software gives you a stack trace; an agent gives you a plausible answer that went astray somewhere. You cannot write a rule for a failure you cannot locate.</p>
+    <h3>Domain expertise</h3>
+    <p>Fourteen years bridging bank trading desks and front-office controls, across London, Luxembourg and Paris.</p>
   </li>
-  <li>
-    <span class="n">03</span>
-    <h3>Accountability</h3>
-    <p>Who signs for the result. These questions fall between the people who own the process and the people who build the system — and nothing that falls between two functions gets built unless someone is answerable for it.</p>
-  </li>
-</ol>
+</ul>
 
 <p class="stance">The model is allowed to be wrong. The process isn't.</p>
 
