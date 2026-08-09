@@ -66,3 +66,24 @@ Pick a decision made early in your workflow and revised later. Leave the old ver
 If it answers with the old one, a bigger model won't save you. Putting the current value explicitly in front of it will.
 
 </div>
+
+<p class="dd-label">What this rests on</p>
+
+The constraints above were measured across **five models, nineteen conditions and
+eighteen adversarial cases** — not a single run on a single model. Two figures
+worth stating explicitly, because they set the price of each layer:
+
+**Over-fetching is cheap, and here is how cheap.** Five distracting fragments
+retrieved alongside the correct one cost thirteen percentage points in the worst
+case observed. That is the number behind Layer 3: it is the margin you are
+buying recall with, and it is small next to the cost of missing the right
+fragment entirely.
+
+**Append-only has a second payoff beyond recoverability.** Appending at the tail
+leaves the cache prefix intact; it is compaction that invalidates it. So the
+storage discipline that keeps an overruled decision recoverable is the same one
+that keeps the prefix cache usable — the two requirements point the same way,
+which is rare enough to be worth noticing.
+
+Neither figure changes the argument. They bound it, which is the part a reader
+needs in order to disagree with it precisely.
