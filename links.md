@@ -7,22 +7,24 @@ description: Where to find the papers, the code, the identifiers and the feed.
 
 # Links
 
+<p class="page-intro">The papers, the code behind them, and the places this writing appears. Everything here is current; nothing is a placeholder.</p>
+
 <p class="section-label">Research</p>
 
 <ul class="cards">
 
   <li class="reveal">
     <a href="https://ssrn.com/abstract=7157718">
-      <span class="name">SSRN — Semantic Validation Gates</span>
-      <span class="what">Runtime verification of language-model output with finite-sample guarantees.</span>
+      <span class="name">Semantic Validation Gates</span>
+      <span class="what">Working paper, 2026. Five computable gates for language-model output, each threshold carrying a finite-sample guarantee.</span>
       <span class="addr">ssrn.com/abstract=7157718</span>
     </a>
   </li>
 
   <li class="reveal">
     <a href="https://ssrn.com/abstract=6365178">
-      <span class="name">SSRN — Geometric reference frame</span>
-      <span class="what">Four closed-form conditions for asserting an architectural scaling law.</span>
+      <span class="name">A geometric reference frame</span>
+      <span class="what">Working paper, 2026. Four conditions a model suite must satisfy before a scaling law can be asserted across it.</span>
       <span class="addr">ssrn.com/abstract=6365178</span>
     </a>
   </li>
@@ -38,7 +40,7 @@ description: Where to find the papers, the code, the identifiers and the feed.
   <li class="reveal">
     <a href="https://orcid.org/{{ site.orcid }}">
       <span class="name">ORCID</span>
-      <span class="what">Persistent identifier tying the published work to one author record.</span>
+      <span class="what">Persistent identifier for the published work.</span>
       <span class="addr">orcid.org/{{ site.orcid }}</span>
     </a>
   </li>
@@ -52,15 +54,15 @@ description: Where to find the papers, the code, the identifiers and the feed.
   <li class="reveal">
     <a href="https://github.com/research-zhaoluoqing/semantic-validation-gates">
       <span class="name">semantic-validation-gates</span>
-      <span class="what">Reference implementation of the five validation gates, with the frozen protocol and per-run artifacts.</span>
-      <span class="addr">github.com/…/semantic-validation-gates</span>
+      <span class="what">Reference implementation, frozen protocol and per-run artifacts. Apache-2.0.</span>
+      <span class="addr">github.com/research-zhaoluoqing</span>
     </a>
   </li>
 
   <li class="reveal">
     <a href="https://github.com/research-zhaoluoqing">
       <span class="name">GitHub</span>
-      <span class="what">Everything else — code, protocols and reproduction scripts.</span>
+      <span class="what">Everything else — code and reproduction scripts.</span>
       <span class="addr">github.com/research-zhaoluoqing</span>
     </a>
   </li>
@@ -74,7 +76,7 @@ description: Where to find the papers, the code, the identifiers and the feed.
   <li class="reveal">
     <a href="{{ site.linkedin }}">
       <span class="name">LinkedIn</span>
-      <span class="what">Where the writing here is first published.</span>
+      <span class="what">Where this writing is published first.</span>
       <span class="addr">linkedin.com/in/luoqing-zhao-3064862a</span>
     </a>
   </li>
@@ -90,7 +92,7 @@ description: Where to find the papers, the code, the identifiers and the feed.
   <li class="reveal">
     <a href="{{ '/feed.xml' | relative_url }}">
       <span class="name">RSS</span>
-      <span class="what">Subscribe to new writing. No newsletter, no sign-up, no list.</span>
+      <span class="what">New writing as it appears. No newsletter, no sign-up.</span>
       <span class="addr">/feed.xml</span>
     </a>
   </li>

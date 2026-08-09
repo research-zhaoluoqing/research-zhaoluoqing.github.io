@@ -1,14 +1,21 @@
 {% assign words = include.post.content | number_of_words %}
 {% assign mins = words | divided_by: 200.0 | ceil %}
 {% if mins < 1 %}{% assign mins = 1 %}{% endif %}
-<div class="entry reveal">
-  <h3><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h3>
-  <p class="meta">
-    <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%-d %B %Y" }}</time>
-    <span class="sep">·</span>{{ mins }} min read
-    {% if include.post.tags.size > 0 %}
-    <span class="sep">·</span><span class="tags">{% for tag in include.post.tags %}<span class="tag">{{ tag }}</span>{% unless forloop.last %} {% endunless %}{% endfor %}</span>
-    {% endif %}
-  </p>
-  {% if include.post.summary %}<p class="summary">{{ include.post.summary }}</p>{% endif %}
+<div class="entry reveal{% if include.post.thumb %} has-thumb{% endif %}">
+  {% if include.post.thumb %}
+  <a class="entry-thumb" href="{{ include.post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ include.post.thumb | relative_url }}" alt="" loading="lazy" decoding="async">
+  </a>
+  {% endif %}
+  <div class="entry-body">
+    <h3><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h3>
+    <p class="meta">
+      <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%-d %B %Y" }}</time>
+      <span class="sep">·</span>{{ mins }} min read
+      {% if include.post.tags.size > 0 %}
+      <span class="sep">·</span><span class="tags">{% for tag in include.post.tags %}<span class="tag">{{ tag }}</span>{% unless forloop.last %} {% endunless %}{% endfor %}</span>
+      {% endif %}
+    </p>
+    {% if include.post.summary %}<p class="summary">{{ include.post.summary }}</p>{% endif %}
+  </div>
 </div>

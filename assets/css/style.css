@@ -279,6 +279,37 @@ table { display: block; overflow-x: auto; border-collapse: collapse; width: 100%
 }
 .entry:last-child { border-bottom: 1px solid var(--rule); }
 
+/* optional thumbnail: add  thumb: /assets/img/foo.png  to a post's front matter */
+.entry.has-thumb {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.entry-body { flex: 1; min-width: 0; }
+
+.entry-thumb {
+  flex-shrink: 0;
+  width: 7.5rem;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  display: block;
+}
+
+.entry-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 30rem) {
+  .entry.has-thumb { flex-direction: column; gap: .7rem; }
+  .entry-thumb { width: 100%; aspect-ratio: 2 / 1; }
+}
+
 .entry h3 { margin: 0 0 .3rem; font-size: 1.02rem; }
 .entry h3 a { color: var(--ink); text-decoration: none; }
 .entry h3 a:hover { color: var(--accent); }
@@ -519,13 +550,21 @@ footer.site p { margin: 0 0 .3rem; }
 
 /* ------------------------------------------------------ link cards */
 
+.page-intro {
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 .6rem;
+}
+
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: .8rem;
-  margin: 1.4rem 0;
+  margin: 1.1rem 0 2.2rem;
   padding: 0;
   list-style: none;
+  align-items: stretch;
 }
 
 .cards li { margin: 0; }
