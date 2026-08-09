@@ -28,7 +28,7 @@ rest.
 <ul class="track">
   <li>
     <h3>Production AI and governance</h3>
-    <p>Running production language-model pipelines inside a global markets control function, backed by published runtime verification theory rather than by hope.</p>
+    <p>Running production language-model pipelines in a regulated front-office environment, backed by published runtime verification theory rather than by hope.</p>
   </li>
   <li>
     <h3>Domain expertise</h3>
