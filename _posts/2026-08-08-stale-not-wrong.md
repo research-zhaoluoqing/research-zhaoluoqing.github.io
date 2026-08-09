@@ -8,6 +8,7 @@ summary: >-
 standfirst: On what an agent remembers after a decision changes
 tags: [context, memory, architecture]
 linkedin_url: https://www.linkedin.com/feed/update/urn:li:activity:7491712007969087488/
+published: false   # ← DRAFT. Delete this line once the post text is pasted in below.
 ---
 
 <div class="original" markdown="1">
