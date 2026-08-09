@@ -557,6 +557,14 @@ footer.site p { margin: 0 0 .3rem; }
 
 .cards a:hover .name { color: var(--accent); }
 
+/* mark links that leave the site — internal (/feed.xml) and mailto: stay bare */
+.cards a[href^="http"] .name::after {
+  content: " ↗";
+  font-size: .78em;
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+
 .cards .what {
   display: block;
   font-size: .84rem;
