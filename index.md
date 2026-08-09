@@ -36,7 +36,10 @@ rest.
   </li>
 </ul>
 
-<p class="stance">The model is allowed to be wrong. The process isn't.</p>
+<p class="stance">
+  <span class="cede">The model is allowed to be wrong.</span>
+  <span class="hold">The process isn't.</span>
+</p>
 
 <p class="section-label">Writing</p>
 

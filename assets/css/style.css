@@ -349,13 +349,33 @@ table { display: block; overflow-x: auto; border-collapse: collapse; width: 100%
 /* ------------------------------------------------------ the stance */
 
 .stance {
-  font-size: 1.06rem;
-  line-height: 1.5;
-  font-weight: 500;
-  color: var(--ink);
   border-left: 2px solid var(--accent);
-  padding: .2rem 0 .2rem 1rem;
-  margin: 2rem 0 0;
+  padding: .35rem 0 .35rem 1.05rem;
+  margin: 2.2rem 0 0;
+}
+
+/* what you concede, stated quietly */
+.stance .cede {
+  display: block;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+/* what you hold, stated in full voice */
+.stance .hold {
+  display: block;
+  font-size: 1.34rem;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: -.014em;
+  color: var(--accent);
+  margin-top: .18rem;
+}
+
+@media (max-width: 30rem) {
+  .stance .hold { font-size: 1.18rem; }
 }
 
 .section-label {
@@ -371,10 +391,24 @@ table { display: block; overflow-x: auto; border-collapse: collapse; width: 100%
 /* ------------------------------------------------- list of writing */
 
 .entry {
-  padding: 1.15rem 0;
+  padding: 1.15rem .85rem;
+  margin: 0 -.85rem;
   border-top: 1px solid var(--rule);
+  border-radius: 6px;
+  transition: background-color .18s ease, box-shadow .18s ease;
 }
 .entry:last-child { border-bottom: 1px solid var(--rule); }
+
+/* row lights up as a whole, so the target reads as one thing */
+.entry:hover,
+.entry:focus-within {
+  background: var(--bg-soft);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.entry:hover h3 a { color: var(--accent); }
+
+.entry:hover .entry-thumb { border-color: var(--accent); }
 
 /* optional thumbnail: add  thumb: /assets/img/foo.png  to a post's front matter */
 .entry.has-thumb {
@@ -643,6 +677,35 @@ footer.site p { margin: 0 0 .3rem; }
 .linkrow a:hover {
   color: var(--accent);
   border-color: var(--accent);
+}
+
+/* copy-citation button sits in the same row as the links */
+.linkrow button.cite {
+  font: inherit;
+  font-family: var(--sans);
+  font-size: .76rem;
+  padding: .24rem .6rem;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: color .15s, border-color .15s;
+}
+
+.linkrow button.cite:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.linkrow button.cite.is-done {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.linkrow button.cite:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* ------------------------------------------------------ link cards */

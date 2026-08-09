@@ -24,6 +24,7 @@ data. Both papers are working papers on SSRN; neither has completed peer review.
   <div class="linkrow">
     <a href="https://ssrn.com/abstract=7157718">SSRN</a>
     <a href="https://github.com/research-zhaoluoqing/semantic-validation-gates">Code</a>
+    <button type="button" class="cite" data-copy="Zhao, L. (2026). Semantic Validation Gates. SSRN Working Paper. https://ssrn.com/abstract=7157718">Copy citation</button>
   </div>
 </div>
 
@@ -39,6 +40,7 @@ data. Both papers are working papers on SSRN; neither has completed peer review.
   </p>
   <div class="linkrow">
     <a href="https://ssrn.com/abstract=6365178">SSRN</a>
+    <button type="button" class="cite" data-copy="Zhao, L. (2026). One decorrelated model suite as a geometric reference frame. SSRN Working Paper, revised. https://ssrn.com/abstract=6365178">Copy citation</button>
   </div>
   <p class="muted" style="font-size:.82rem; margin-top:.6rem">
     Code and artifacts are released on publication.
