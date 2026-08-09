@@ -47,6 +47,48 @@ the post URL are all generated. Nothing else to update.
 
 ---
 
+## Adding an image to a post
+
+**1. Shrink it first.** A diagram straight out of an image generator is often
+1.5 MB, which is most of a second on a phone. Convert it once:
+
+```bash
+python -c "
+from PIL import Image
+im = Image.open('SOURCE.png').convert('RGB')
+w, h = im.size
+if w > 1200: im = im.resize((1200, int(h*1200/w)), Image.LANCZOS)
+im.save('assets/img/NAME.webp', 'WEBP', quality=88, method=6)
+"
+```
+
+1.6 MB → about 110 KB, with no visible loss at the width the site renders.
+
+**2. Put it in the post** where it belongs in the argument:
+
+```html
+<figure>
+  <img src="/assets/img/NAME.webp" width="1200" height="669" loading="lazy" decoding="async"
+       alt="Describe what the diagram shows, not that it is a diagram.">
+  <figcaption>One line. Say what the reader should take from it.</figcaption>
+</figure>
+```
+
+`width` and `height` are not cosmetic — without them the page reflows when the
+image loads and the paragraph you were reading jumps.
+
+**3. Optionally reuse it as the list thumbnail** by adding one front matter line:
+
+```yaml
+thumb: /assets/img/NAME.webp
+```
+
+Posts without `thumb` still lay out correctly; the thumbnail is optional per post.
+
+**On alt text:** write what the diagram *says*. "Panel one shows step 3 setting a
+definition, step 9 overruling it, and step 11 still outputting step 3" is useful
+to someone who cannot see it. "Infographic" is not.
+
 ## Pattern: original post + deep dive
 
 When a piece has already run on LinkedIn, the page can carry both the version

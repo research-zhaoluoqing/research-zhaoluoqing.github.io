@@ -7,7 +7,7 @@ summary: >-
 standfirst: On why pilots pass and systems fail
 tags: [governance, verification, deployment]
 linkedin_url: https://www.linkedin.com/feed/update/urn:li:activity:7489545468620877824/
-thumb: /assets/img/correction-trap.svg
+thumb: /assets/img/correction-trap.webp
 ---
 
 Three numbers in Stanford's 2026 AI Index refuse to sit together.
@@ -68,8 +68,9 @@ audit logs are built to answer *what did it do*, and what you need to answer is
 ## Where the correction goes
 
 <figure>
-  <img src="/assets/img/correction-trap.svg" alt="Two trajectories from the same branch point. A correction that lands on the output keeps expert effort flat; a correction that lands in the system makes it fall. Over the first six weeks the two are indistinguishable.">
-  <figcaption>Both paths produce correct output. Only one of them ends.</figcaption>
+  <img src="/assets/img/correction-trap.webp" width="1200" height="669" loading="lazy" decoding="async"
+       alt="Enterprise AI agent deployment, from black box to governed system, in four dimensions: the diagnosis, observability and control, double-loop governance between a domain expert and an engineer, and evolution and verification.">
+  <figcaption>The four dimensions, and the broken loop they replace. Figures from Stanford HAI, 2026 AI Index Report.</figcaption>
 </figure>
 
 Now watch the moment an error is caught. Someone notices, corrects it, moves on.
