@@ -2,19 +2,67 @@
 title: "Stale, Not Wrong"
 date: 2026-08-08
 summary: >-
-  In a long workflow an agent can hand back something that was correct when it
-  was written and has since been overruled. That is not a hallucination — it is
-  a context architecture problem.
-standfirst: On what an agent remembers after a decision changes
-tags: [context, memory, architecture]
+  Step 3 sets a definition. Step 9 overrules it. Step 11 outputs the Step 3
+  version. Nothing is broken, the content is right, and the answer is wrong.
+standfirst: What an agent remembers after a decision changes
+tags: [context, agents, architecture]
 linkedin_url: https://www.linkedin.com/feed/update/urn:li:activity:7491712007969087488/
-published: false   # ← DRAFT. Delete this line once the post text is pasted in below.
 ---
 
 <div class="original" markdown="1">
 
-<!-- PASTE THE LINKEDIN POST TEXT HERE, EXACTLY AS PUBLISHED.
-     Keep the blank lines between paragraphs.
-     Do not edit it — this block claims to be the original. -->
+AI remembers. AI remembers the version from three weeks ago.
+
+[Last post](/writing/the-correction-trap/) I said an AI agent will sometimes hand you a failure without an error code. Someone asked what that looks like in practice.
+
+Here is one — and it isn't just an agent problem. It's a workflow problem.
+
+## The Problem: Stale, Not Wrong
+
+Any long process has this vulnerability. Example of A 12-step approval chain. A monthly report through five stages. Make it long enough, and somebody changes their mind midway.
+
+Step 3 sets a definition. It's written down and shared.
+
+Step 9 overrules that definition.
+
+Step 11 runs, and the system outputs the Step 3 version.
+
+Not a hallucination. The agent found a real record that was completely correct when it was written. Nothing looks broken. The content is right, but the answer is wrong.
+
+## The Context Trap: Three Potholes
+
+Builders usually take one of three roads. All of them have potholes:
+
+**Give it everything:** enough steps and you blow up the context window. Short of that, costs climb and early material gets ignored.
+
+**Compress it (summarize):** lossy and one-way. If your summary doesn't state which version "won," that fact is gone forever.
+
+**Filter it (retrieve):** sounds cleanest, but semantic similarity has no sense of time. Steps 3 and 9 are about the same topic. Retrieval might return only Step 3 because it was longer or more detailed.
+
+## Possible Solution: A 3-Layer Architecture
+
+**Layer 1: Write — rule, don't list.**
+
+One summary listed: "Step 5 set A, Step 9 set B." The other ruled: "Final is B, A is void." Changing that one sentence pushed the model's success rate from 13% to 100%.
+
+Note: a bigger model does worse here, not better. The largest model I tested dropped from 94.4% to 5.6% on a hedging summary. You can't buy your way past this by scaling up.
+
+**Layer 2: Storage — compression hides, never deletes.**
+
+The log must be append-only, every record pointing to its parent. A compaction is just a view: the original stays on the chain, so it never has to sit in the active context, and can still be recovered exactly. (Warning: one in-place update destroys this guarantee silently.)
+
+**Layer 3: Orchestration — select for recall, not precision.**
+
+Five irrelevant fragments alongside the correct one cost very little. Over-fetch. Extra fragments are cheap; missing the right one breaks the output.
+
+## The Open Problem
+
+Addressing is what I have not solved. I have the constraint, but not the ranker — when to trigger it, how to rank fragments, how many to pull. That is next, and I am open to ideas.
+
+## The Litmus Test
+
+Pick a decision made early in your workflow and revised later. Leave the old version in the context. Ask your agent what the value is now.
+
+If it answers with the old one, a bigger model won't save you. Putting the current value explicitly in front of it will.
 
 </div>
