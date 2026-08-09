@@ -17,20 +17,32 @@ description: >-
   </p>
 </div>
 
-<p class="lede">
-Most of the difficulty in deploying AI is not making it work. It is deciding
-what happens when it is wrong.
-</p>
+<p class="claim">Most of the difficulty in deploying AI is not making it work. It is deciding <em>what happens when it is wrong</em>.</p>
 
-<hr>
+I work on language models in settings where being wrong is a reportable event —
+where the question is not whether a system is impressive but whether anyone can
+say why its output should be trusted. Three things decide that, and none of them
+is a model problem.
 
-I write about runtime verification of language-model output: how to define what
-counts as an acceptable answer, how to tell where a long chain actually broke,
-and who has to be accountable before any of it can be relied on.
+<ol class="dims">
+  <li>
+    <span class="n">01</span>
+    <h3>Definition</h3>
+    <p>What counts as an acceptable output at each step. Not <em>is it correct</em>, but <em>how wrong can it be and still be usable</em>. Human judgement is not deterministic either; processes tolerate that because someone defined the tolerance.</p>
+  </li>
+  <li>
+    <span class="n">02</span>
+    <h3>Diagnosis</h3>
+    <p>Where a long chain actually broke. Software gives you a stack trace; an agent gives you a plausible answer that went astray somewhere. You cannot write a rule for a failure you cannot locate.</p>
+  </li>
+  <li>
+    <span class="n">03</span>
+    <h3>Accountability</h3>
+    <p>Who signs for the result. These questions fall between the people who own the process and the people who build the system — and nothing that falls between two functions gets built unless someone is answerable for it.</p>
+  </li>
+</ol>
 
-The recurring theme is that these are design and governance questions rather
-than model questions — and that they are usually left unanswered because they
-fall between two functions.
+<p class="stance">The model is allowed to be wrong. The process isn't.</p>
 
 <p class="section-label">Writing</p>
 

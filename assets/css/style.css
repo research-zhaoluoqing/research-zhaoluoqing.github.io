@@ -279,6 +279,101 @@ table { display: block; overflow-x: auto; border-collapse: collapse; width: 100%
 
 .lede + hr { margin: 1.5rem 0 1.5rem; }
 
+/* ------------------------------------------------ the claim */
+
+.claim {
+  font-size: 1.42rem;
+  line-height: 1.38;
+  letter-spacing: -.016em;
+  color: var(--ink);
+  margin: 2rem 0 1.1rem;
+  font-weight: 500;
+}
+
+.claim em {
+  font-style: normal;
+  background-image: linear-gradient(transparent 62%, var(--accent) 62%, var(--accent) 86%, transparent 86%);
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  .claim em {
+    background-image: linear-gradient(transparent 62%, rgba(159,189,232,.28) 62%, rgba(159,189,232,.28) 90%, transparent 90%);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .claim em {
+    background-image: linear-gradient(transparent 62%, rgba(61,77,112,.16) 62%, rgba(61,77,112,.16) 90%, transparent 90%);
+  }
+}
+
+.claim + p { color: var(--ink-soft); }
+
+/* -------------------------------------- three numbered dimensions */
+
+.dims {
+  list-style: none;
+  padding: 0;
+  margin: 2.2rem 0;
+  display: grid;
+  gap: .1rem;
+}
+
+.dims li {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr;
+  gap: 0 .9rem;
+  padding: 1.05rem 0;
+  margin: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.dims li:last-child { border-bottom: 1px solid var(--rule); }
+
+.dims .n {
+  font-family: var(--sans);
+  font-size: .78rem;
+  font-weight: 640;
+  letter-spacing: .06em;
+  color: var(--accent);
+  padding-top: .18rem;
+}
+
+.dims h3 {
+  margin: 0 0 .22rem;
+  font-size: .96rem;
+  font-weight: 640;
+  letter-spacing: -.006em;
+}
+
+.dims p {
+  margin: 0;
+  grid-column: 2;
+  font-size: .95rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 30rem) {
+  .dims li { grid-template-columns: 1fr; gap: .2rem; }
+  .dims p { grid-column: 1; }
+  .claim { font-size: 1.24rem; }
+}
+
+/* ------------------------------------------------------ the stance */
+
+.stance {
+  font-size: 1.06rem;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--ink);
+  border-left: 2px solid var(--accent);
+  padding: .2rem 0 .2rem 1rem;
+  margin: 2rem 0 0;
+}
+
 .section-label {
   font-family: var(--sans);
   font-size: .72rem;
