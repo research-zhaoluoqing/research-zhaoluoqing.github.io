@@ -19,10 +19,11 @@ description: >-
 
 <p class="claim">Most of the difficulty in deploying AI is not making it work. It is deciding <em>what happens when it is wrong</em>.</p>
 
-I architect AI workflows for highly regulated environments — where being wrong is
-a reportable event. The hard part is rarely the model. It is defining the strict
-boundaries of what should be automated at all, and engineering the governance
-stack that holds the rest.
+I architect AI workflows for highly regulated environments — the places where an
+AI hallucination is not a curiosity but an incident someone has to answer for.
+The hard part is rarely the model. It is defining the strict boundaries of what
+should be automated at all, and engineering the governance stack that holds the
+rest.
 
 <ul class="track">
   <li>
