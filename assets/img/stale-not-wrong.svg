@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img"
+     aria-label="A twelve step chain. Step 3 sets a definition, step 9 overrules it, and step 11 still outputs the step 3 version.">
+  <style>
+    .bg   { fill: #fcfcfb; }
+    .rule { stroke: #d6dbe2; }
+    .dot  { fill: #c2c9d3; }
+    .live { fill: #3d4d70; }
+    .dead { fill: #8a94a0; }
+    .bad  { fill: none; stroke: #a3564e; }
+    .flow { fill: none; stroke: #3d4d70; }
+    .t    { fill: #1a1d21; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+    .s    { fill: #55606d; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+    .f    { fill: #8a94a0; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+    .warn { fill: #a3564e; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; }
+    @media (prefers-color-scheme: dark) {
+      .bg   { fill: #14171b; }
+      .rule { stroke: #2b313a; }
+      .dot  { fill: #3a424d; }
+      .live { fill: #9fbde8; }
+      .dead { fill: #6f7986; }
+      .bad  { stroke: #d98b80; }
+      .flow { stroke: #9fbde8; }
+      .t    { fill: #e7eaee; }
+      .s    { fill: #a8b2be; }
+      .f    { fill: #6f7986; }
+      .warn { fill: #d98b80; }
+    }
+  </style>
+
+  <rect class="bg" width="600" height="400"/>
+
+  <text class="t" x="40" y="52" font-size="21" font-weight="600">Stale, not wrong</text>
+  <text class="s" x="40" y="76" font-size="13.5">A record can be correct when written and wrong when read.</text>
+
+  <!-- the chain -->
+  <line class="rule" x1="40" y1="232" x2="560" y2="232" stroke-width="1.4"/>
+
+  <!-- inactive steps -->
+  <g class="dot">
+    <circle cx="40"  cy="232" r="4"/>
+    <circle cx="87"  cy="232" r="4"/>
+    <circle cx="182" cy="232" r="4"/>
+    <circle cx="229" cy="232" r="4"/>
+    <circle cx="276" cy="232" r="4"/>
+    <circle cx="323" cy="232" r="4"/>
+    <circle cx="370" cy="232" r="4"/>
+    <circle cx="465" cy="232" r="4"/>
+    <circle cx="560" cy="232" r="4"/>
+  </g>
+
+  <!-- the carried value: step 3 travels past step 9 and lands on step 11 -->
+  <path class="flow" d="M134 220 C 200 150, 380 150, 500 218" stroke-width="1.6"
+        stroke-dasharray="5 4" opacity="0.85"/>
+  <path class="flow" d="M494 210 L 502 220 L 490 222" stroke-width="1.6" fill="none"/>
+
+  <!-- step 3 : sets -->
+  <circle class="live" cx="134" cy="232" r="7.5"/>
+  <text class="t" x="134" y="264" font-size="12.5" font-weight="600" text-anchor="middle">Step 3</text>
+  <text class="s" x="134" y="282" font-size="12" text-anchor="middle">sets the definition</text>
+
+  <!-- step 9 : overrules, but is not carried -->
+  <circle class="dead" cx="417" cy="232" r="7.5"/>
+  <line class="bad" x1="410" y1="207" x2="424" y2="221" stroke-width="1.6"/>
+  <line class="bad" x1="424" y1="207" x2="410" y2="221" stroke-width="1.6"/>
+  <text class="t" x="417" y="264" font-size="12.5" font-weight="600" text-anchor="middle">Step 9</text>
+  <text class="s" x="417" y="282" font-size="12" text-anchor="middle">overrules it</text>
+
+  <!-- step 11 : outputs the stale one -->
+  <circle class="bad" cx="512" cy="232" r="9" stroke-width="1.8"/>
+  <circle class="dead" cx="512" cy="232" r="4"/>
+  <text class="t" x="512" y="264" font-size="12.5" font-weight="600" text-anchor="middle">Step 11</text>
+  <text class="warn" x="512" y="282" font-size="12" text-anchor="middle">outputs step 3</text>
+
+  <text class="f" x="40" y="140" font-size="12">the step 3 version is what gets carried forward</text>
+
+  <line class="rule" x1="40" y1="322" x2="560" y2="322" stroke-width="1"/>
+  <text class="t" x="40" y="350" font-size="14.5" font-weight="600">The content is right. The answer is wrong.</text>
+  <text class="f" x="40" y="372" font-size="12">Not a hallucination — a context architecture problem.</text>
+</svg>

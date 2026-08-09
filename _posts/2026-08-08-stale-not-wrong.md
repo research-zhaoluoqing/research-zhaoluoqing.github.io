@@ -7,7 +7,13 @@ summary: >-
 standfirst: What an agent remembers after a decision changes
 tags: [context, agents, architecture]
 linkedin_url: https://www.linkedin.com/feed/update/urn:li:activity:7491712007969087488/
+thumb: /assets/img/stale-not-wrong.svg
 ---
+
+<figure>
+  <img src="/assets/img/stale-not-wrong.svg" alt="A twelve step chain. Step 3 sets a definition, step 9 overrules it, and step 11 still outputs the step 3 version.">
+  <figcaption>The failure has no error code. Step 9 was never wrong, and step 11 never saw it.</figcaption>
+</figure>
 
 <div class="original" markdown="1">
 

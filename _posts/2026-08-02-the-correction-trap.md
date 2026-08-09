@@ -7,6 +7,7 @@ summary: >-
 standfirst: On why pilots pass and systems fail
 tags: [governance, verification, deployment]
 linkedin_url: https://www.linkedin.com/feed/update/urn:li:activity:7489545468620877824/
+thumb: /assets/img/correction-trap.svg
 ---
 
 Three numbers in Stanford's 2026 AI Index refuse to sit together.
@@ -65,6 +66,11 @@ audit logs are built to answer *what did it do*, and what you need to answer is
 *why, and at which step could we have intervened*.
 
 ## Where the correction goes
+
+<figure>
+  <img src="/assets/img/correction-trap.svg" alt="Two trajectories from the same branch point. A correction that lands on the output keeps expert effort flat; a correction that lands in the system makes it fall. Over the first six weeks the two are indistinguishable.">
+  <figcaption>Both paths produce correct output. Only one of them ends.</figcaption>
+</figure>
 
 Now watch the moment an error is caught. Someone notices, corrects it, moves on.
 The only thing that matters is where that correction lands.
