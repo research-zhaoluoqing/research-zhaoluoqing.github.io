@@ -1,13 +1,13 @@
 ---
 title: "Motion Is Not Progress"
-date: 2026-09-01
+date: 2026-08-31
 summary: >-
   An agent loop fails two ways — it never stops, or it stops too early with an
   answer you can't trust. Both are the same failure: the loop can't tell motion
   from progress.
 standfirst: On why agent loops feel unreliable
 tags: [governance, verification, agents]
-linkedin_url:   # backfill after the LinkedIn post is live
+linkedin_url: https://www.linkedin.com/feed/update/urn:li:activity:7500338043745189889/
 thumb: /assets/img/motion-is-not-progress.webp
 ---
 
