@@ -6,7 +6,7 @@ summary: >-
   is better — which one to use is decided by where a checkable criterion can live.
 standfirst: On chains, loops, and where to put your criteria
 tags: [governance, agents, system-design]
-linkedin_url:   # backfill after the LinkedIn post is live
+linkedin_url: https://www.linkedin.com/feed/update/urn:li:activity:7501921628600041472/
 thumb: /assets/img/chain-or-loop.webp
 ---
 
