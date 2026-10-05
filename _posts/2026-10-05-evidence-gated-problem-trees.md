@@ -7,7 +7,7 @@ summary: >-
   conditions under which local agent loops add up to a solved problem.
 standfirst: Working paper, draft v0.1
 tags: [agents, verification, methodology, systems]
-thumb: /assets/img/egpt-loop.webp
+thumb: /assets/img/egpt-cooking-analogy.webp
 ---
 
 > This is a personal working paper, draft v0.1. It has not been peer reviewed.
@@ -15,6 +15,13 @@ thumb: /assets/img/egpt-loop.webp
 > shows that the protocol can be operated, not that it outperforms
 > alternatives. The case was run on the author's own project files. Every event
 > in it occurred as reported; none was staged.
+
+<figure>
+  <img src="/assets/img/egpt-cooking-analogy.webp"
+       width="928" height="1152" loading="eager" decoding="async"
+       alt="A cooking analogy. A locked goal, a better new taste while keeping the original nutrition, splits into three steps: tasting to find why a new batch of tomatoes is sour, an adjust-and-taste recipe loop, and a nutrition check. In the loop, adding lots of sugar improves taste but loses nutrition and is not accepted; a pinch of salt improves taste and keeps nutrition and is retained. A final tasting of the whole dish re-checks the joint result; if it fails, the recipe is rewritten rather than adjusted again. Side cards map the three conditions: the test reflects the purpose, the steps are sufficient for the goal, and the joint state holds.">
+  <figcaption>An illustrative cooking analogy, not data. In the paper's terms, the sugar candidate is deferred: held aside because it breaks the nutrition constraint, not admitted by relaxing it.</figcaption>
+</figure>
 
 ## Abstract
 
