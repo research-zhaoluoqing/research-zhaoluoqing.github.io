@@ -5,12 +5,12 @@ summary: >-
   A working paper on keeping what must be solved separate from what is being
   done: per-node acceptance criteria, six evidence-conditioned decisions, and the
   conditions under which local agent loops add up to a solved problem.
-standfirst: Working paper, draft v0.1
+standfirst: Working paper, draft v0.2
 tags: [agents, verification, methodology, systems]
 thumb: /assets/img/egpt-cooking-analogy.webp
 ---
 
-> This is a personal working paper, draft v0.1. It has not been peer reviewed.
+> This is a personal working paper, draft v0.2. It has not been peer reviewed.
 > It describes a protocol and argues for its soundness. The single case study
 > shows that the protocol can be operated, not that it outperforms
 > alternatives. The case was run on the author's own project files. Every event
@@ -46,7 +46,7 @@ Prior work addresses parts of this. Decomposition methods split problems into su
 This paper describes a protocol that applies across task types: answering, diagnosis, implementation, optimisation, and planning. It is deliberately thin. It is a set of rules for what may be written where and when, operated by an ordinary agent with ordinary files. Our contributions are:
 
 1. **Separation of problem and execution trees**, so that the definition of success cannot be edited by the process that pursues it (addresses F2), and **per-node acceptance criteria** fixed when a node is created (F1).
-2. **A closed set of six evidence-conditioned decisions**, including *defer* (F3), *gather* for discriminating evidence, runtime *escalate*, and *re-decompose*. Every node also has separate *status* and *verdict* fields (F4).
+2. **A closed set of six evidence-conditioned decisions**, including *defer* (F3), *gather* for discriminating evidence, runtime *escalate*, and *re-decompose*. Every node also has separate *status* and *verdict* fields (F4). It also includes rules for testing several single-change hypotheses per round without being misled by selection (Section 4.6).
 3. **A soundness argument** (Section 5): local evidence loops compose into a solution of the root problem under three stated conditions, each checked by a concrete protocol step. The method's scope then reduces to a problem's *decomposable depth*: how far it can be split while the conditions hold. This framing poses an open research question: how should sub-issues be generated so that the multi-level loop structure is optimal? We state a cost objective and five testable hypotheses for it (Section 5.3).
 4. **A promotion rule for reusable methods** that requires stated applicability conditions and evidence from more than one context (F5).
 5. **A feasibility demonstration** on a real task with off-the-shelf agents, reported with its full execution trace (Section 6).
@@ -137,7 +137,7 @@ After each action the agent must choose exactly one decision. Table 2 gives the 
 
 | Decision | Condition | Effect |
 |---|---|---|
-| *retain* | Evidence meets *a*<sub>n</sub> and respects *C* | *r*<sub>n</sub> ← `satisfied`; check whether the parent's test is now met; do not add work by default |
+| *retain* | Evidence meets *a*<sub>n</sub> and respects *C* (a *correction*); or the result is not worse and structural complexity falls (a *simplification*) | *r*<sub>n</sub> ← `satisfied`, recording which kind; check whether the parent's test is now met; do not add work by default |
 | *defer* | Gain observed, but some constraint in *C* is violated | Hold the result outside the accepted set; study the risk or seek an alternative; *never* relax *C* to admit it |
 | *retract* | Hypothesis contradicted, or an evidence route proves uninformative | Record what is excluded; switch to a hypothesis or route that still has support; repeating the same action is not allowed |
 | *gather* | Evidence insufficient to decide | Choose the observation that best discriminates between the live hypotheses, with a positive control where possible; if none is obtainable, report the limit |
@@ -146,13 +146,25 @@ After each action the agent must choose exactly one decision. Table 2 gives the 
 
 Two remarks. First, a *measurement or implementation error* is not a decision outcome. It invalidates the evidence, the faulty part is repaired, and the decision is taken on the repaired evidence. Second, the decisions act on execution nodes, while verdicts belong to problem nodes. A problem node can receive several *retract* and *gather* decisions before its verdict is set.
 
-### 4.6 Method library
+### 4.6 Batched hypotheses within a leaf loop
+
+In an optimisation leaf, one iteration can test several hypotheses at once. Five rules keep the extra throughput from turning into noise.
+
+- **One change per hypothesis, judged on its own.** Each candidate changes one thing and receives its own decision. A round in which the aggregate barely moves can still retain a candidate that clearly improves its target without harming anything else.
+- **A frozen incumbent.** Every candidate in a round is compared with the best state frozen at the start of that round, never with another candidate from the same round. This removes order effects and a target that moves within the round.
+- **Judgment at the candidate's scope.** A candidate that acts only on one category of inputs is judged on that category, against a pre-stated threshold, and must leave every constraint within that category no worse. A candidate that acts on all inputs is judged on all of them. A scope-level judgment never bypasses the constraints in *C*.
+- **Simplification is structural.** Retaining a simplification requires a measurable fall in structural complexity or cost: fewer intervention sites, components, mechanisms or calls. A smaller value of the same parameter does not count. The result must be no worse within a non-inferiority margin stated before the round.
+- **Retained means candidate.** Everything retained inside the loop remains a development candidate until it is confirmed on independent, sealed data. The report states the total number of comparisons made, counted as candidates × scopes, so that readers can judge the risk that a winner was lucky.
+
+### 4.7 Method library
 
 Reusable knowledge is admitted in three tiers. A *case note* records what worked once. A *candidate method* states its applicability conditions, its action, its verification, its failure and rollback conditions, its cost, and its evidence. A *rule* additionally has supporting evidence from at least two distinct contexts and at least one checked counter-condition. Nothing is required to be trained into a model, and the library is not created until a real reuse need appears.
 
-### 4.7 Records
+### 4.8 Records
 
 A one-page task card (Appendix A) holds *T* and the initial tree. A JSON file holds the problem and execution nodes (Appendix B). Evidence lives in the actual artefacts: logs, outputs, files. The tree stores references to them, never copies. There is deliberately no second ledger, because two records of the same fact eventually disagree. Each evidence reference carries an *evidence level*: `observed` (produced in this task), `documented` (stated by an authoritative external source), or `inferred`. This field was added after the case study, where the distinction between observed and documented findings turned out to be essential.
+
+Evidence must carry new information. Re-evaluating an unchanged procedure on unchanged inputs is not replication. Under deterministic generation it reproduces the same output byte for byte, and it adds nothing. Replication requires inputs the procedure has not been selected on: a held-back split that is reported but never used to choose, or a sealed set.
 
 ## 5. Why the Protocol Works: Compositional Acceptance
 
@@ -172,9 +184,9 @@ For a node *n* with children ch(*n*), let sat(*m*) denote "the purpose of *m* is
 
 The claim is elementary. Its value lies in naming exactly what can go wrong, and in the fact that each condition corresponds to a protocol step that tests it:
 
-- **C1 can fail through proxy overfitting.** The local loop optimises the test instead of the purpose. Defences: acceptance is fixed at node creation and edited only by versioning; positive and negative examples are fixed in alignment; held-out checks apply where a score exists, in the spirit of Arbor's merge gate <a href="#ref-6">[6]</a>; and *defer* quarantines gains that break constraints.
+- **C1 can fail through proxy overfitting.** The local loop optimises the test instead of the purpose. Defences: acceptance is fixed at node creation and edited only by versioning; positive and negative examples are fixed in alignment; held-out checks apply where a score exists, in the spirit of Arbor's merge gate <a href="#ref-6">[6]</a>; and *defer* quarantines gains that break constraints. Selection is a second route to C1 failure: when many candidates are tried, some pass by chance. Hence retained candidates remain development candidates until sealed confirmation, and the number of comparisons is reported (Section 4.6).
 - **C2 can fail through mis-decomposition.** All children pass, but the parent does not. Defence: every internal node keeps its own *a*<sub>n</sub>, which is re-run when its children close. A failure here is evidence about the *split*, so the decision is *re-decompose*, not another round of the local loop.
-- **C3 can fail through interaction.** One child's fix breaks a sibling. Defence: the parent check runs on the combined state; methods are re-verified after they are combined.
+- **C3 can fail through interaction.** One child's fix breaks a sibling. Defence: the parent check runs on the combined state; methods are re-verified after they are combined. A parent check may be *derived* rather than re-run only when three things hold. The children act on disjoint inputs. Their effects do not stack. And each child's recorded outputs can be reused unchanged in the combination. In that case C3 holds by construction and the parent result is computed from the children's records. Otherwise the combination is a new procedure and must be measured.
 
 The conditions cannot be verified in advance. They are hypotheses about the tree, and the parent-level checks are what test them. This is why a tree with per-node acceptance and parent re-checks is self-correcting rather than merely hierarchical: a violated condition surfaces as a failed parent test at the lowest level where it matters.
 
@@ -198,7 +210,7 @@ C1–C3 say when a decomposition is *correct*. Many correct decompositions usual
 
 where *c*<sub>ℓ</sub> is the cost of one iteration of leaf ℓ's loop and *k*<sub>ℓ</sub> is the number of iterations it needs to pass *a*<sub>ℓ</sub>. For an internal node *n*, *c*<sub>n</sub><sup>chk</sup> is the cost of its composition check, *p*<sub>n</sub> the probability that C2 or C3 fails at *n*, and *R*<sub>n</sub> the rework cost of the resulting *re-decompose*. An optimal decomposition minimises *J* subject to C1 holding at every leaf. A C1 failure cannot be priced inside the tree, because it is invisible to the tree's own checks.
 
-**The trade-off.** Deeper trees shrink *c*<sub>ℓ</sub> and 𝔼[*k*<sub>ℓ</sub>]: each local loop gets a smaller search space and a sharper, faster signal. But every added level adds check costs and further chances for *p*<sub>n</sub>*R*<sub>n</sub>. Shallower trees reverse both effects. The optimum is interior whenever splitting sharpens feedback faster than it adds coupling.
+**The trade-off.** Deeper trees shrink *c*<sub>ℓ</sub> and 𝔼[*k*<sub>ℓ</sub>]: each local loop gets a smaller search space and a sharper, faster signal. But every added level adds check costs and further chances for *p*<sub>n</sub>*R*<sub>n</sub>. Shallower trees reverse both effects. The optimum is interior whenever splitting sharpens feedback faster than it adds coupling. The same trade-off appears inside a leaf. Testing *m* hypotheses per round (Section 4.6) reduces 𝔼[*k*<sub>ℓ</sub>], but the number of comparisons grows with *m* times the number of scopes, and with it the probability of a lucky winner. That cost belongs in *J* as the price of the sealed confirmation needed to rule such winners out.
 
 **Hypothesised properties of good splits.** We state these as hypotheses for evaluation, not as results.
 
@@ -214,12 +226,12 @@ where *c*<sub>ℓ</sub> is the cost of one iteration of leaf ℓ's loop and *k*<
 
 The protocol maintains six invariants that an external checker could verify on the records:
 
-- **I1 — Goal integrity.** *g*, *A* and *C* change only by creating *T*<sup>(v+1)</sup> with a reason; execution nodes never write task fields.
+- **I1 — Goal integrity.** *g*, *A* and *C* change only by creating *T*<sup>(v+1)</sup> with a reason; execution nodes never write task fields. A new version takes effect at an iteration boundary, so that the iteration in flight finishes under the rules it started with.
 - **I2 — Constraint preservation.** No result that violates *C* is ever retained.
 - **I3 — Closure is not success.** Delivery reports every *a*<sub>i</sub> ∈ *A* as met (with evidence) or unmet; *s*<sub>n</sub> = `closed` never stands in for *r*<sub>n</sub> = `satisfied`.
 - **I4 — Authority monotonicity.** No decision expands *Z*; *escalate* is the only route to more authority.
 - **I5 — Provenance.** Every non-null verdict cites evidence with a stated evidence level.
-- **I6 — Bounded growth.** The same action is not repeated on unchanged inputs; each *re-decompose* records why the previous split failed.
+- **I6 — Bounded growth.** The same action is not repeated on unchanged inputs, and such a repeat is never counted as replication; each *re-decompose* records why the previous split failed.
 
 ## 6. Feasibility Case Study
 
@@ -278,6 +290,8 @@ The problem was thus partly the opposite of the one first posed. The new project
 - Tasks should be stratified by decomposable depth (Section 5.2), to test the prediction that EGPT's benefit grows with it.
 - A second study should hold the tasks fixed and vary the decomposition policy, to test H1–H5 (Section 5.3).
 
+**Second case in progress.** A second feasibility case, an optimisation task that uses batched hypotheses (Section 4.6), is under way. It is expected to exercise *defer* and both kinds of *retain*. It will be reported only after its sealed confirmation, and only as it actually occurred.
+
 ## 8. Conclusion
 
 EGPT is a small protocol with a specific claim. If every sub-problem receives a checkable purpose when it is created, and every update is one of six evidence-conditioned decisions, then the definition of success cannot be quietly rewritten. Local evidence loops compose into a solution exactly when their tests are valid, their splits sufficient, and their interactions checked, and each of those conditions has a step that tests it. A single real case shows that the protocol runs on ordinary files with ordinary agents. It also shows that its decisions are triggered by the blockers, errors and mis-scoped questions that occur in practice. Whether it makes agents better at solving problems is the next question, and Section 7 sets out how to answer it.
@@ -304,6 +318,11 @@ task           : { id, version, type, goal, deliverable, acceptance[],
                    status, verdict }
 open item      : { id, what, resume_condition }
 ```
+
+## Revision history
+
+- **v0.2 (5 October 2026).** Adds rules for batched single-change hypotheses within a leaf loop (Section 4.6). Splits *retain* into correction and structural simplification. Adds the requirement that evidence carry new information, so that re-evaluation on unchanged inputs is not replication. States when a parent check may be derived rather than re-run (Section 5.1). Adds selection as a route to C1 failure, version changes at iteration boundaries (I1), and a note on a second case in progress.
+- **v0.1 (5 October 2026).** First draft.
 
 ## References
 
