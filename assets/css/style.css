@@ -23,7 +23,7 @@
   --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
            "Helvetica Neue", Arial, sans-serif;
 
-  --measure: 34rem;
+  --measure: 42rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,9 +60,9 @@ html {
   z-index: 0;
   pointer-events: none;           /* never blocks selection or clicks */
   /* fade the field out behind the reading column, keep it alive at the edges */
-  -webkit-mask-image: radial-gradient(ellipse 44% 52% at 50% 40%,
+  -webkit-mask-image: radial-gradient(ellipse 52% 56% at 50% 40%,
                       transparent 0%, rgba(0,0,0,.5) 58%, #000 100%);
-          mask-image: radial-gradient(ellipse 44% 52% at 50% 40%,
+          mask-image: radial-gradient(ellipse 52% 56% at 50% 40%,
                       transparent 0%, rgba(0,0,0,.5) 58%, #000 100%);
 }
 
