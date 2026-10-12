@@ -788,3 +788,101 @@ footer.site p { margin: 0 0 .3rem; }
   h1 { font-size: 1.5rem; }
   .lede { font-size: 1.12rem; }
 }
+
+/* ---------------------------------------------- ADaPT reflection */
+
+.adapt-cover a { display: block; }
+.adapt-cover img { background: #fff; }
+
+.adapt-post table { font-size: .9em; line-height: 1.55; margin: 1.5rem 0; }
+.adapt-post th, .adapt-post td {
+  padding: .7rem .8rem;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+  min-width: 8rem;
+}
+.adapt-post th { font-family: var(--sans); font-size: .85em; background: var(--bg-soft); }
+
+.adapt-flow, .adapt-equation {
+  padding: 1.35rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--bg);
+}
+.adapt-figure-label {
+  font-family: var(--sans);
+  font-size: .67rem;
+  font-weight: 650;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 .55rem;
+}
+.adapt-flow h3 { margin: 0 0 1.2rem; font-size: 1.06rem; }
+.adapt-flow-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.35rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.adapt-flow-steps li {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: .85rem .65rem;
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  background: var(--bg-soft);
+  font-family: var(--sans);
+}
+.adapt-flow-steps li:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -1.15rem;
+  top: 2.15rem;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+.adapt-step-number { display: block; font-size: .64rem; color: var(--ink-faint); margin-bottom: .3rem; }
+.adapt-flow-steps strong { display: block; font-size: .84rem; line-height: 1.3; margin-bottom: .55rem; }
+.adapt-flow-steps li > span:last-child { display: block; font-size: .72rem; line-height: 1.5; color: var(--ink-soft); }
+.adapt-response-options { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.15rem; }
+.adapt-response-options span {
+  padding: .3rem .6rem;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  font-family: var(--sans);
+  font-size: .7rem;
+  color: var(--ink-soft);
+}
+.adapt-response-options .adapt-response-decompose { color: var(--ink); border-color: #c89543; font-weight: 650; }
+.adapt-recursion-note { font-family: var(--sans); font-size: .76rem; line-height: 1.5; margin: .9rem 0; color: var(--ink-soft); }
+.adapt-flow figcaption { border-top: 1px solid var(--rule); padding-top: .8rem; }
+
+.adapt-equation { margin: 1.8rem 0; background: var(--bg-soft); }
+.adapt-equation math {
+  font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", serif;
+  font-size: clamp(1rem, 3vw, 1.55rem);
+  color: var(--ink);
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  padding: .3rem 0;
+}
+.adapt-equation-key { display: flex; flex-wrap: wrap; gap: .7rem 1.5rem; margin: 0; }
+.adapt-equation-key div { display: flex; gap: .55rem; align-items: baseline; }
+.adapt-equation-key dt { color: var(--ink); white-space: nowrap; }
+.adapt-equation-key dd { margin: 0; font-family: var(--sans); font-size: .72rem; color: var(--ink-soft); }
+.adapt-equation-example { margin: .95rem 0 0; padding-top: .8rem; border-top: 1px solid var(--rule); font-size: .83rem; }
+
+@media (max-width: 40rem) {
+  .adapt-flow, .adapt-equation { padding: 1rem; }
+  .adapt-flow-steps { grid-template-columns: 1fr; gap: 1.3rem; }
+  .adapt-flow-steps li { padding: .7rem .85rem; }
+  .adapt-flow-steps li:not(:last-child)::after { content: "↓"; right: auto; left: calc(50% - .35rem); top: auto; bottom: -1.28rem; }
+  .adapt-flow-steps strong { font-size: .95rem; margin-bottom: .3rem; }
+  .adapt-flow-steps li > span:last-child { font-size: .78rem; }
+  .adapt-equation-key { flex-direction: column; gap: .4rem; }
+}

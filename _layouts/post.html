@@ -5,7 +5,7 @@ layout: default
 {% assign mins = words | divided_by: 200.0 | ceil %}
 {% if mins < 1 %}{% assign mins = 1 %}{% endif %}
 
-<article class="post">
+<article class="post{% if page.post_class %} {{ page.post_class | escape }}{% endif %}">
   <header>
     <h1>{{ page.title }}</h1>
     <p class="meta">
