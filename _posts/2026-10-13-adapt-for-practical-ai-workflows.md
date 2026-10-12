@@ -1,6 +1,6 @@
 ---
 title: "Planning Less Up Front: ADaPT for Practical AI Workflows"
-date: 2026-10-13
+date: 2026-10-13 00:32:00 +0100
 summary: >-
   A reflection on letting execution reveal where a workflow needs more structure:
   attempt, verify, diagnose, and decompose when useful, with local optimisation
