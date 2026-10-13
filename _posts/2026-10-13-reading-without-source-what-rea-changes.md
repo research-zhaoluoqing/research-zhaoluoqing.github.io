@@ -8,11 +8,11 @@ summary: >-
   not, and this essay poses them without answering them.
 standfirst: On agent-driven reverse engineering, and the questions it opens
 tags: [reverse-engineering, agents, verification, security]
-thumb: /assets/img/rea-binary-keeps-and-loses.webp
-image: /assets/img/rea-binary-keeps-and-loses.webp
-image_width: 1200
-image_height: 675
-image_alt: "Three columns: source code, compiled binary and what REA returns. A binary keeps behaviour, usually strips names and comments, reduces types to sizes and offsets, and does not record design intent. REA returns pseudocode, symbols, calls, evidence and stated limits."
+thumb: /assets/img/rea-cover-pyramid.webp
+image: /assets/img/rea-cover-pyramid.webp
+image_width: 1006
+image_height: 1102
+image_alt: "An archaeology analogy. An original pyramid labelled source code keeps its behaviour, names and comments, and design intent. After compilation it is an eroded pyramid: behaviour is kept, names and comments are usually stripped, design intent is lost. Agent proposals are hypotheses, not evidence. A robot labelled agent excavates pseudocode as proposals, and symbols, strings, calls and references as evidence."
 ---
 
 > This is a personal essay on a public open-source tool and on general concepts
@@ -26,12 +26,18 @@ image_alt: "Three columns: source code, compiled binary and what REA returns. A 
 > investment advice. The references to law describe one provision in one
 > jurisdiction as a question, not as a conclusion.
 
+<figure>
+  <img src="/assets/img/rea-cover-pyramid.webp" width="1006" height="1102" loading="eager" fetchpriority="high" decoding="async"
+       alt="An archaeology analogy. An original pyramid labelled source code keeps its behaviour, names and comments, and design intent. After compilation it is an eroded pyramid: behaviour is kept, names and comments are usually stripped, design intent is lost. Agent proposals are hypotheses, not evidence. A robot labelled agent excavates pseudocode as proposals, and symbols, strings, calls and references as evidence.">
+  <figcaption>An analogy, not data: the source pyramid erodes when it is compiled. The robot is the coding agent. What it brings back are proposals and evidence, and a proposal is a hypothesis.</figcaption>
+</figure>
+
 A compiled program keeps what the code does and discards why it was written that way.
 
 That one sentence explains most of what a reverse-engineering tool can and cannot do, and it frames how I read the arrival of REA, a recently released open-source project that connects AI coding agents to professional reverse-engineering tools.
 
 <figure>
-  <img src="/assets/img/rea-binary-keeps-and-loses.webp" width="1200" height="675" loading="eager" decoding="async"
+  <img src="/assets/img/rea-binary-keeps-and-loses.webp" width="1200" height="675" loading="lazy" decoding="async"
        alt="Three columns: source code, compiled binary and what REA returns. A binary keeps behaviour, usually strips names and comments, reduces types to sizes and offsets, and does not record design intent. REA returns pseudocode, symbols, strings, calls and references, evidence and stated limits.">
   <figcaption>What survives compilation, and what the tooling hands back. An agent can propose names and structure; a proposal is a hypothesis, not a recovery.</figcaption>
 </figure>
