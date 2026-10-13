@@ -1,12 +1,12 @@
 ---
-title: "Reading Without Source: What REA Changes, and What It Does Not"
+title: "How AI Can Reverse Engineer Any Software"
 date: 2026-10-13 00:45:00 +0100
 summary: >-
   REA lets coding agents interrogate compiled software and return evidence-backed
   findings, not source code. The technical mechanism is modest. The questions it
   opens for vendors, security teams, lawyers and engineering organisations are
   not, and this essay poses them without answering them.
-standfirst: On agent-driven reverse engineering, and the questions it opens
+standfirst: What REA changes, what it does not, and the questions it opens
 tags: [reverse-engineering, agents, verification, security]
 thumb: /assets/img/rea-cover-pyramid.webp
 image: /assets/img/rea-cover-pyramid.webp
